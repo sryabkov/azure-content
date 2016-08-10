@@ -63,24 +63,12 @@ Though you'll probably want the *same* Azure resources created in each environme
  - TestApp1-Parameters-Pre-Production.json
 
 3. Using any text or JSON editor, edit the Development environment parameter file you created in Step 3, replacing the values listed to the right of the parameter values in the file with the *values* listed to the right of the **parameters** below: 
- - **siteName**: *TestApp1DevApp*
- - **hostingPlanName**: *TestApp1DevPlan*
- - **siteLocation**: *Central US*
- - **serverName**: *testapp1devsrv*
- - **serverLocation**: *Central US*
  - **administratorLogin**: *testapp1Admin*
  - **administratorLoginPassword**: *replace with your password*
- - **databaseName**: *testapp1devdb*
 
 4. Using any text or JSON editor, edit the Test environment parameter file you created in Step 3, replacing the the values listed to the right of the parameter values in the file with the *values* listed to the right of the **parameters** below:
- - **siteName**: *TestApp1TestApp*
- - **hostingPlanName**: *TestApp1TestPla*n
- - **siteLocation**: *Central US*
- - **serverName**: *testapp1testsrv*
- - **serverLocation**: *Central US*
  - **administratorLogin**: *testapp1Admin*
  - **administratorLoginPassword**: *replace with your password*
- - **databaseName**: *testapp1testdb*
 
 5. Using any text or JSON editor, edit the Pre-Production parameter file you created in Step 3.  Replace the entire contents of the file with what's below:
 
@@ -94,26 +82,8 @@ Though you'll probably want the *same* Azure resources created in each environme
     	"administratorLoginPassword" : {
     	  "value" : "replace with your password"
     	},
-    	"databaseName" : {
-    	  "value" : "testapp1preproddb"
-    	},
-    	"hostingPlanName" : {
-    	  "value" : "TestApp1PreProdPlan"
-    	},
-    	"serverLocation" : {
-    	  "value" : "Central US"
-    	},
-    	"serverName" : {
-    	  "value" : "testapp1preprodsrv"
-    	},
-    	"siteLocation" : {
-    	  "value" : "Central US"
-    	},
-    	"siteName" : {
-    	  "value" : "TestApp1PreProdApp"
-    	},
-    	"sku" : {
-    	  "value" : "Standard"
+    	"skuName" : {
+    	  "value" : "S1"
     	},
     		"requestedServiceObjectiveName" : {
     		  "value" : "S1"
@@ -121,15 +91,15 @@ Though you'll probably want the *same* Azure resources created in each environme
     	  }
     	}
 
-In the Pre-Production parameters file above, the **sku** and **requestedServiceObjectiveName** parameters were *added*, whereas they weren't added in the Development and Test parameters files. This is because there are default values specified for these parameters in the template, and in the Development and Test environments, the default values are used, but in the Pre-Production environment non-default values for these parameters are used.
+In the Pre-Production parameters file above, the **skuName** and **requestedServiceObjectiveName** parameters were *added*, whereas they weren't added in the Development and Test parameters files. This is because there are default values specified for these parameters in the template, and in the Development and Test environments, the default values are used, but in the Pre-Production environment non-default values for these parameters are used.
 
-The reason non-default values are used for these parameters in the Pre-Production environment is to test values for these parameters that you might prefer for your Production environment so they can also be tested.  These parameters all relate to the Azure [Web App hosting plans](https://azure.microsoft.com/pricing/details/app-service/), or **sku** and Azure [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/), or **requestedServiceObjectiveName** that are used by the application.  Different skus and service objective names have different costs and features and support different service level metrics.
+The reason non-default values are used for these parameters in the Pre-Production environment is to test values for these parameters that you might prefer for your Production environment so they can also be tested.  These parameters all relate to the Azure [Web App hosting plans](https://azure.microsoft.com/pricing/details/app-service/), or **skuName** and Azure [SQL Database](https://azure.microsoft.com/pricing/details/sql-database/), or **requestedServiceObjectiveName** that are used by the application.  Different skus and service objective names have different costs and features and support different service level metrics.
 
 The table below lists the default values for these parameters specified in the template and the values that are used instead of the default values in the Pre-Production parameters file.
 
 | Parameter | Default value | Parameter file value |
 |---|---|---|
-| **sku** | Free | Standard |
+| **skuName** | F1 | S1 |
 | **requestedServiceObjectiveName** | S0 | S1 |
 
 ## Create environments
